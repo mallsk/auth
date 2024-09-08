@@ -1,4 +1,6 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET = "hellomalls"
 
 const app = express();
 app.use(express.json());
@@ -35,5 +37,15 @@ app.post("/signin", (req, res) => {
     }
   }
 });
+
+//TODO : Practice
+app.get("/me", function(req, res) {
+  const token = req.headers.token // jwt
+  const decodedInformation = jwt.verify(token, JWT_SECRET);  
+  
+  
+
+
+})
 
 app.listen(3000);
